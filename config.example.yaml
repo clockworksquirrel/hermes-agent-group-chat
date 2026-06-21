@@ -1,0 +1,43 @@
+# Example agent_group_chat configuration.
+# Copy the block below into your ~/.hermes/config.yaml and adjust to taste.
+
+agent_group_chat:
+  enabled: true
+
+  # If true, the plugin only fires in group/channel rooms (Telegram groups,
+  # Discord channels, etc). Set false to also route @mentions in 1:1 DMs.
+  shared_chats_only: false
+
+  # Prefix prepended to every agent reply. {agent} = display name, {profile} = profile id.
+  reply_prefix: '**{agent}**: '
+
+  # How many mentioned agents may run in parallel for a single message.
+  max_concurrent: 4
+
+  # Per-agent run timeout (seconds) and reply length cap (characters).
+  timeout_seconds: 1800
+  max_reply_chars: 12000
+
+  # If false, the host/main agent stays silent when a message only @mentions
+  # other agents. Set true to also let the host reply.
+  also_run_current: false
+
+  # Allow @default to address the base profile.
+  include_default: false
+
+  # If true, ONLY the agents listed below participate (skip auto-discovery
+  # of everything under profiles/).
+  explicit_agents_only: false
+
+  # Named agents and their @aliases. Any profile under ~/.hermes/profiles/ is
+  # also auto-discovered; this block is for friendly names and extra aliases.
+  agents:
+    hank:
+      name: Hank
+      aliases: hank,builder,coder
+    tommy:
+      name: Tommy
+      aliases: tommy,reviewer,review
+    sammy:
+      name: Sammy
+      aliases: sammy,security,sec
